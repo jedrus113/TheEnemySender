@@ -29,7 +29,7 @@ function addEnemy(power){
         health: power
     };
     enemies.push(newEnemy);
-    var waitTime = power * 30;
+    var waitTime = power * 50 + enemySpawnWaittime;
     nextEnemyPossibleAt = Date.now() + waitTime;
 }
 

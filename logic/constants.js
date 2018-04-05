@@ -1,6 +1,7 @@
 var enemySpawnAtX = 521;
 var enemySpawnAtY = 300;
 var enemySpeed = 1;
+var enemySpawnWaittime = 2000;
 
 var heroSpanAtX = 10;
 var heroSpanAtY = 310;
