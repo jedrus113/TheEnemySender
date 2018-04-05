@@ -1,4 +1,5 @@
 var gameCanvas;
+var gameCanvas2d;
 var eventCatcherDiv;
 
 
@@ -50,6 +51,7 @@ function drawText(g, stringValue, fillText, size, x, y)
 
 function startGame()
 {
+    logicInit();
     gameInterval = setInterval(runGame, 25);
 }
 
@@ -62,7 +64,9 @@ function canvasMove(E)
 
 function runGame()
 {
-    gameCanvas.getContext("2d").clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+    gameCanvas2d.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+    drawGameFrame();
+    drawUI();
 }
 
 function gameOver(reason){
