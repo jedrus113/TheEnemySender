@@ -8,6 +8,7 @@ function logicLoad(){
 function initLogic(){
     score = 0;
     initEnemy();
+    initHero();
 }
 
 function drawGameFrame(){
