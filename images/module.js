@@ -1,5 +1,4 @@
 // shall be fist
-var images_to_get = [];
 var images = [];
 
 function getImageFile(filename)

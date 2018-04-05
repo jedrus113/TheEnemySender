@@ -1,8 +1,6 @@
 var gameCanvas;
 var eventCatcherDiv;
 
-var scoreText;
-var scoreBox;
 
 function startLoading()
 {
@@ -11,8 +9,8 @@ function startLoading()
     showLoadingScreen();
 
     eventCatcherDiv = document.getElementById("EventCatcher");
-    scoreText = document.getElementById("scoreText");
-    scoreBox = document.getElementById("scoreBox");
+
+    logicLoad();
 
     // start checking if images has been loaded
     gameInterval = setInterval(hasLoaded, 250);
@@ -52,8 +50,6 @@ function drawText(g, stringValue, fillText, size, x, y)
 
 function startGame()
 {
-    scoreText = "Score: ";
-    scoreBox = score;
     gameInterval = setInterval(runGame, 25);
 }
 
@@ -66,8 +62,6 @@ function canvasMove(E)
 
 function runGame()
 {
-    scoreBox.innerHTML = score;
-
     gameCanvas.getContext("2d").clearRect(0, 0, gameCanvas.width, gameCanvas.height);
 }
 
