@@ -1,7 +1,7 @@
-var enemySpawnAtX = 601;
-var enemySpawnAtY = 350;
-var heroSpanAtX = 50;
-var heroSpanAtY = 350;
+var enemySpawnAtX = 521;
+var enemySpawnAtY = 300;
+var heroSpanAtX = 10;
+var heroSpanAtY = 310;
 
 heroSizeX = 100;
 heroSizeY = 100;
