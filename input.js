@@ -9,7 +9,7 @@ function initKeyListeners(){
     document.body.onkeyup = function(e) {
         if (e.code === "Space" || e.code === "Enter" ) {
             if ( keyDownAt !== 0 ){
-                var result = keyDownAt - new Date().getTime();
+                var result = new Date().getTime() - keyDownAt;
                 keyDownAt = 0;
                 addEnemy(result);
             }
