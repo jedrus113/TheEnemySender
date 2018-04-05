@@ -1,8 +1,9 @@
 var enemies;
 var nextEnemyPossibleAt;
-
+var removeStopSignAt;
 
 function initEnemy(){
+    displayWaitSign = 0;
     enemies = [];
     nextEnemyPossibleAt = 0;
 }
@@ -33,11 +34,29 @@ function addEnemy(power){
 }
 
 function canICreateAnEnemy(){
-    return (Date.now() > nextEnemyPossibleAt)
+    if (Date.now() > nextEnemyPossibleAt){
+        removeStopSignAt = 0;
+        return true;
+    } else {
+        removeStopSignAt = Date.now() + 500;
+        return false;
+    }
 }
 
 function drawEnemies(){
     for (var i = 0; i < enemies.length; i++){
         drawItem(enemies[i])
+    }
+    if ( Date.now() < removeStopSignAt ){
+        drawItem({
+            x:200,
+            y:50,
+            sizeX: 200,
+            sizeY: 200,
+            image: imageNames.wait
+        })
+    }
+    else if ( removeStopSignAt !== 0 && Date.now() >= removeStopSignAt ){
+        removeStopSignAt = 0;
     }
 }
