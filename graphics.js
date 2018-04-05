@@ -1,11 +1,13 @@
 // shall be fist
 var images = [];
+var imageNames = {};
 
-function getImageFile(filename)
+function getImageFile(filename, name)
 {
     var imgVar = document.createElement("img");
     imgVar.setAttribute("src", filename);
-    return imgVar;
+    imageNames[name] = images.length;
+    images.push(imgVar);
 }
 
 function didImagesLoad()

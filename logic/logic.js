@@ -1,5 +1,4 @@
-var enemyNo;
-
+var score;
 
 function logicLoad(){
     getImageFile("images/Stickman.png");
@@ -7,7 +6,8 @@ function logicLoad(){
 }
 
 function initLogic(){
-    enemyNo = 0;
+    score = 0;
+    initEnemy();
 }
 
 function drawGameFrame(){

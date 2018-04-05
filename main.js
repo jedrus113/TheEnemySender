@@ -51,7 +51,7 @@ function drawText(g, stringValue, fillText, size, x, y)
 
 function startGame()
 {
-    logicInit();
+    initLogic();
     gameInterval = setInterval(runGame, 25);
 }
 
