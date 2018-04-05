@@ -1,32 +1,25 @@
+var gameCanvas;
+var eventCatcherDiv;
+
+var scoreText;
+var scoreBox;
+
 function startLoading()
 {
     gameCanvas = document.getElementById("GraphicsBox");
+    gameCanvas2d = gameCanvas.getContext("2d");
     showLoadingScreen();
 
-    loadingScreens();
-    loadingFood();
-    loadingHero();
-
     eventCatcherDiv = document.getElementById("EventCatcher");
+    scoreText = document.getElementById("scoreText");
     scoreBox = document.getElementById("scoreBox");
 
     // start checking if images has been loaded
     gameInterval = setInterval(hasLoaded, 250);
 }
 
-function getImageFile(filename)
-{
-    var imgVar = document.createElement("img");
-    imgVar.setAttribute("src", filename);
-    return imgVar;
-}
-
-function didEverythingLoad()
-{
-    for (let j = 0; j < images.length; j++)
-        if (!images[j].complete) return false;
-    return true;
-
+function didEverythingLoad(){
+    return didImagesLoad();
 }
 
 function hasLoaded()
@@ -35,12 +28,7 @@ function hasLoaded()
     {
         clearInterval(gameInterval);
 
-        heroes = [];
-        new Hero();
         score = 0;
-        secondAlive = 0;
-        eatenFreeshFood = 0;
-        eatenRootenFood = 0;
 
         eventCatcherDiv.addEventListener("mousemove", canvasMove);
         secondInterval = setInterval(oneSecond, 1000);
@@ -49,9 +37,7 @@ function hasLoaded()
 }
 
 function oneSecond(){
-    secondAlive += 1;
-    foodRotting();
-    heroAnimationNext();
+
 }
 
 function drawText(g, stringValue, fillText, size, x, y)
@@ -66,6 +52,8 @@ function drawText(g, stringValue, fillText, size, x, y)
 
 function startGame()
 {
+    scoreText = "Score: ";
+    scoreBox = score;
     gameInterval = setInterval(runGame, 25);
 }
 
@@ -81,8 +69,6 @@ function runGame()
     scoreBox.innerHTML = score;
 
     gameCanvas.getContext("2d").clearRect(0, 0, gameCanvas.width, gameCanvas.height);
-    drawFoods();
-    drawHeroes();
 }
 
 function gameOver(reason){
@@ -94,7 +80,5 @@ function gameOver(reason){
 }
 
 function restart(){
-    heroRestart();
-    foodRestart();
-    hasLoaded();
+    gameInterval = setInterval(hasLoaded, 250);
 }
