@@ -27,5 +27,7 @@ function addEnemy(power){
 }
 
 function drawEnemies(){
-
+    for (var i = 0; i < enemies.length; i++){
+        drawItem(enemies[i])
+    }
 }

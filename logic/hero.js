@@ -16,5 +16,7 @@ function initHero(){
 }
 
 function drawHeroes(){
-
+    for (var i = 0; i < heroes.length; i++){
+        drawItem(heroes[i])
+    }
 }

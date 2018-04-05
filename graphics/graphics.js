@@ -18,6 +18,6 @@ function didImagesLoad()
 
 }
 
-function draw(item){
+function drawItem(item){
     gameCanvas2d.drawImage(images[item.image], item.x, item.y, item.sizeX, item.sizeY);
 }
