@@ -12,5 +12,6 @@ function initLogic(){
 }
 
 function drawGameFrame(){
-
+    drawEnemies();
+    drawHeroes();
 }

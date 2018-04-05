@@ -17,3 +17,7 @@ function didImagesLoad()
     return true;
 
 }
+
+function draw(item){
+    gameCanvas2d.drawImage(images[item.image], item.x, item.y, item.sizeX, item.sizeY);
+}
