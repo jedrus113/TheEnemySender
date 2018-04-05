@@ -1,15 +1,19 @@
 var enemies;
+var nextEnemyPossibleAt;
 
 
 function initEnemy(){
     enemies = [];
+    nextEnemyPossibleAt = 0;
 }
 
 function addEnemy(power){
-    if (power > 2000){
-        power = 2000;
-    }
     power = power / 20;
+    if (power > 100){
+        power = 100;
+    } else if(power < 10){
+        power = 10;
+    }
 
     sizeX = 50 + power;
     sizeY = 50 + power;
@@ -23,7 +27,13 @@ function addEnemy(power){
         sizeY: sizeY,
         health: power
     };
-    enemies.push(newEnemy)
+    enemies.push(newEnemy);
+    var waitTime = power * 30;
+    nextEnemyPossibleAt = Date.now() + waitTime;
+}
+
+function canICreateAnEnemy(){
+    return (Date.now() > nextEnemyPossibleAt)
 }
 
 function drawEnemies(){
