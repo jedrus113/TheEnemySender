@@ -45,7 +45,8 @@ function canICreateAnEnemy(){
 
 function drawEnemies(){
     for (var i = 0; i < enemies.length; i++){
-        drawItem(enemies[i])
+        enemies[i].x -= enemySpeed;
+        drawItem(enemies[i]);
     }
     if ( Date.now() < removeStopSignAt ){
         drawItem({
