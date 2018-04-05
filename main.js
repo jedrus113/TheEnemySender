@@ -29,7 +29,6 @@ function hasLoaded()
 
         score = 0;
 
-        eventCatcherDiv.addEventListener("mousemove", canvasMove);
         secondInterval = setInterval(oneSecond, 1000);
         startGame();
     }
@@ -56,12 +55,6 @@ function startGame()
     gameInterval = setInterval(runGame, 25);
 }
 
-function canvasMove(E)
-{
-    E = E || window.event;
-    heroMoveTo(E.pageX, E.pageY);
-
-}
 
 function runGame()
 {
@@ -73,7 +66,6 @@ function runGame()
 function gameOver(reason){
     clearInterval(secondInterval);
     clearInterval(gameInterval);
-    eventCatcherDiv.removeEventListener("mousemove", canvasMove);
     showGameOverScreen(reason);
     eventCatcherDiv.addEventListener("click", restart);
 }

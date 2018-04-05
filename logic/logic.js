@@ -1,8 +1,8 @@
 var score;
 
 function logicLoad(){
-    getImageFile("images/Stickman.png");
-    getImageFile("images/evil.png");
+    getImageFile("images/Stickman.png", "hero");
+    getImageFile("images/evil.png", "evil");
 }
 
 function initLogic(){
