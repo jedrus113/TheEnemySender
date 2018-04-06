@@ -14,7 +14,7 @@ function initHero(){
 }
 
 function drawHeroes(){
-    if(!heroes[firstHero.id]){
+    if(!firstHero || !heroes[firstHero.id]){
         firstHero = null;
         for (var id in heroes){
             if(fistHero == null || heroes[id].position.x > firstHero.position.x){
@@ -24,5 +24,13 @@ function drawHeroes(){
     }
     for (var id in heroes){
         drawItem(heroes[id]);
+
+        for (var enemyId in enemies){
+            if (enemies[enemyId].position.x < heroes[id].position.x + heroes[id].size.x + heroes[id].weapon.range) {
+                attack(heroes[id], enemies[enemyId]);
+            }
+
+        }
     }
+
 }
