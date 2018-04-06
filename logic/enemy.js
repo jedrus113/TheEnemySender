@@ -16,20 +16,13 @@ function addEnemy(power){
         power = 10;
     }
 
-    sizeX = 50 + power;
-    sizeY = 50 + power;
-
-    var newEnemy = {
-        name: "evil",
-        image: imageNames.evil,
-        x: enemySpawnAtX,
-        y: enemySpawnAtY,
-        sizeX: sizeX,
-        sizeY: sizeY,
-        health: power
-    };
+    var newEnemy = JSON.parse(JSON.stringify(character.evil));
+    newEnemy.weapon.damageMin = power / 5;
+    newEnemy.weapon.damageMax = power / 2;
+    newEnemy.size = {x: power+50, y: power+50};
     enemies.push(newEnemy);
-    var waitTime = power * 50 + enemySpawnWaittime;
+
+    var waitTime = (power * config.enemy.multiplicationSpawnWaittime) + config.enemy.baseSpawnWaittime;
     nextEnemyPossibleAt = Date.now() + waitTime;
 }
 
@@ -45,16 +38,14 @@ function canICreateAnEnemy(){
 
 function drawEnemies(){
     for (var i = 0; i < enemies.length; i++){
-        enemies[i].x -= enemySpeed;
+        enemies[i].position.x = enemies[i].position.x - config.enemy.speed;
         drawItem(enemies[i]);
     }
     if ( Date.now() < removeStopSignAt ){
         drawItem({
-            x:200,
-            y:50,
-            sizeX: 200,
-            sizeY: 200,
-            image: imageNames.wait
+            position: {x:200, y:50},
+            size: {x:200, y:200},
+            image: "wait"
         })
     }
     else if ( removeStopSignAt !== 0 && Date.now() >= removeStopSignAt ){

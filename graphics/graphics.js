@@ -19,5 +19,5 @@ function didImagesLoad()
 }
 
 function drawItem(item){
-    gameCanvas2d.drawImage(images[item.image], item.x, item.y, item.sizeX, item.sizeY);
+    gameCanvas2d.drawImage(images[imageNames[item.image]], item.position.x, item.position.y, item.size.x, item.size.y);
 }
