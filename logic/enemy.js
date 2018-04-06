@@ -20,6 +20,7 @@ function addEnemy(power){
     }
 
     var newEnemy = JSON.parse(JSON.stringify(character.evil));
+    newEnemy.health = power;
     newEnemy.id = idEnemies;
     newEnemy.weapon.damageMin = power / 5;
     newEnemy.weapon.damageMax = power / 2;
@@ -45,7 +46,9 @@ function canICreateAnEnemy(){
 function drawEnemies(){
     for (var id in enemies){
         if (firstHero !== null && enemies[id].position.x <= firstHero.position.x + firstHero.size.x){
-            attack(enemies[id], firstHero);
+            if(enemies[id].nextAttackOn <= Date.now()) {
+                attack(enemies[id], firstHero);
+            }
         } else
         {
             enemies[id].position.x = enemies[id].position.x - config.enemy.speed;

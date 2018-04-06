@@ -25,11 +25,13 @@ function drawHeroes(){
     for (var id in heroes){
         drawItem(heroes[id]);
 
-        for (var enemyId in enemies){
-            if (enemies[enemyId].position.x < heroes[id].position.x + heroes[id].size.x + heroes[id].weapon.range) {
-                attack(heroes[id], enemies[enemyId]);
-            }
+        if (heroes[id].nextAttackOn <= Date.now()) {
+            for (var enemyId in enemies) {
+                if (enemies[enemyId].position.x < heroes[id].position.x + heroes[id].size.x + heroes[id].weapon.range) {
+                    attack(heroes[id], enemies[enemyId]);
+                }
 
+            }
         }
     }
 

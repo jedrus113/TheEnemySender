@@ -2,7 +2,7 @@ var config = {
     enemy: {
         spanAt: {x:521, y:300},
         speed: 1,
-        multiplicationSpawnWaittime: 60,
+        multiplicationSpawnWaittime: 30,
         baseSpawnWaittime: 2000
     },
     hero: {

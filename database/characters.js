@@ -7,7 +7,8 @@ var character = {
         image: "evil",
         position: config.enemy.spanAt,
         size: {x:70, y:70},
-        health: 50
+        health: 50,
+        nextAttackOn: 0
     },
     hero: {
         weapon: weapon.heroSword,
@@ -15,7 +16,8 @@ var character = {
         image: "hero",
         health: config.hero.defaultHP,
         position: config.hero.spanAt,
-        size: config.hero.size
+        size: config.hero.size,
+        nextAttackOn: 0
     }
 };
 
