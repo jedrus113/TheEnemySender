@@ -1,12 +1,15 @@
 var enemies;
+var idEnemies;
 var nextEnemyPossibleAt;
 var removeStopSignAt;
 
 function initEnemy(){
+    idEnemies = 0;
     displayWaitSign = 0;
-    enemies = [];
+    enemies = {};
     nextEnemyPossibleAt = 0;
 }
+
 
 function addEnemy(power){
     power = power / 20;
@@ -17,10 +20,13 @@ function addEnemy(power){
     }
 
     var newEnemy = JSON.parse(JSON.stringify(character.evil));
+    newEnemy.id = idEnemies;
     newEnemy.weapon.damageMin = power / 5;
     newEnemy.weapon.damageMax = power / 2;
     newEnemy.size = {x: power+50, y: power+50};
-    enemies.push(newEnemy);
+    newEnemy.dict = enemies;
+    enemies[idEnemies] = newEnemy;
+    idEnemies++;
 
     var waitTime = (power * config.enemy.multiplicationSpawnWaittime) + config.enemy.baseSpawnWaittime;
     nextEnemyPossibleAt = Date.now() + waitTime;
@@ -37,9 +43,14 @@ function canICreateAnEnemy(){
 }
 
 function drawEnemies(){
-    for (var i = 0; i < enemies.length; i++){
-        enemies[i].position.x = enemies[i].position.x - config.enemy.speed;
-        drawItem(enemies[i]);
+    for (var id in enemies){
+        if (firstHero !== null && enemies[id].position.x <= firstHero.position.x + firstHero.size.x){
+            attack(enemies[id], firstHero);
+        } else
+        {
+            enemies[id].position.x = enemies[id].position.x - config.enemy.speed;
+        }
+        drawItem(enemies[id]);
     }
     if ( Date.now() < removeStopSignAt ){
         drawItem({

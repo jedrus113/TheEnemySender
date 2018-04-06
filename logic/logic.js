@@ -17,3 +17,12 @@ function drawGameFrame(){
     drawEnemies();
     drawHeroes();
 }
+
+function attack(attacker, defender){
+    var damage = attacker.weapon.attack.baseDamage;
+    damage += Math.random() * (attacker.weapon.damage.max - attacker.weapon.damage.min) + attacker.weapon.damage.min;
+    defender.health -= damage;
+    if (defender.health <= 0){
+        delete defender.dict[defender.id];
+    }
+}
