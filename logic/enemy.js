@@ -45,7 +45,7 @@ function canICreateAnEnemy(){
 
 function drawEnemies(){
     for (var id in enemies){
-        if (firstHero !== null && enemies[id].position.x <= firstHero.position.x + firstHero.size.x){
+        if (firstHero !== null && enemies[id].position.x - enemies[id].weapon.range <= firstHero.position.x + firstHero.size.x){
             if(enemies[id].nextAttackOn <= Date.now()) {
                 attack(enemies[id], firstHero);
             }
