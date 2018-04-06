@@ -22,7 +22,7 @@ function attack(attacker, defender){
     if(attacker.nextAttackOn <= Date.now()) {
         var damage = attacker.weapon.attack.baseDamage;
         damage += Math.random() * (attacker.weapon.damage.max - attacker.weapon.damage.min) + attacker.weapon.damage.min;
-        defender.health -= damage;
+        defender.health -= Math.round(damage);
         if (defender.health <= 0) {
             delete defender.dict[defender.id];
         }
