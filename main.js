@@ -28,14 +28,10 @@ function hasLoaded()
         clearInterval(gameInterval);
 
         score = 0;
+        document.getElementById("loading_bar").setAttribute("hidden", "True");
 
-        secondInterval = setInterval(oneSecond, 1000);
         startGame();
     }
-}
-
-function oneSecond(){
-
 }
 
 function drawText(g, stringValue, fillText, size, x, y)

@@ -2,7 +2,7 @@
 
 var character = {
     evil: {
-        weapon: weapon.rustyKnife,
+        items: [],
         name: "evil",
         image: "evil",
         position: config.enemy.spanAt,
@@ -11,7 +11,7 @@ var character = {
         nextAttackOn: 0
     },
     hero: {
-        weapon: weapon.heroSword,
+        weapon: [],
         name: "hero",
         image: "hero",
         health: config.hero.defaultHP,
