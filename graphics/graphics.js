@@ -1,6 +1,7 @@
 // shall be fist
 var images = [];
 var imageNames = {};
+var loaddedSuccess = false;
 
 function getImageFile(filename, name)
 {
@@ -13,8 +14,12 @@ function getImageFile(filename, name)
 function didImagesLoad()
 {
     for (var j = 0; j < images.length; j++)
-        if (!images[j].complete) return false;
-    return true;
+        if (!images[j].complete){
+            loaddedSuccess = false;
+            return loaddedSuccess;
+        }
+    loaddedSuccess = true;
+    return loaddedSuccess;
 
 }
 

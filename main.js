@@ -23,15 +23,20 @@ function didEverythingLoad(){
 
 function hasLoaded()
 {
-    if (didEverythingLoad()) // Check to see if all info is loaded
+    if (loaddedSuccess) // Check to see if all info is loaded
     {
         clearInterval(gameInterval);
 
         score = 0;
         document.getElementById("loading_bar").setAttribute("hidden", "True");
 
-        startGame();
+        showMainMenu();
     }
+    didEverythingLoad();
+}
+
+function showMainMenu(){
+    document.getElementById("main_menu").setAttribute("hidden", "True");
 }
 
 function drawText(g, stringValue, fillText, size, x, y)
