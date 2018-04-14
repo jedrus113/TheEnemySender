@@ -5,8 +5,9 @@ var eventCatcherDiv;
 
 function startLoading()
 {
-    gameCanvas = document.getElementById("GraphicsBox");
-    gameCanvas2d = gameCanvas.getContext("2d");
+    // get back when needed
+    //gameCanvas = document.getElementById("GraphicsBox");
+    //gameCanvas2d = gameCanvas.getContext("2d");
     showLoadingScreen();
 
     eventCatcherDiv = document.getElementById("EventCatcher");
@@ -36,7 +37,7 @@ function hasLoaded()
 }
 
 function showMainMenu(){
-    document.getElementById("main_menu").setAttribute("hidden", "True");
+    document.getElementById("main_menu").removeAttribute("hidden")
 }
 
 function drawText(g, stringValue, fillText, size, x, y)
