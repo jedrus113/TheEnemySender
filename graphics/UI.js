@@ -19,3 +19,12 @@ function drawUI(){
 function showLoadingScreen(){
     show("loading_bar");
 }
+
+function showMainMenu(){
+    if (game.continue){
+        show("continue");
+    } else {
+        hide("continue");
+    }
+    show("main_menu");
+}

@@ -43,15 +43,12 @@ function hasLoaded()
     didEverythingLoad();
 }
 
-function showMainMenu(){
-    if (game.continue){
-        show("continue");
-    } else {
-        hide("continue");
+function new_game(){
+    if (!game.continue || confirm('Are you sure you want to start new game?')){
+        start_new_game();
     }
-    show("main_menu");
 }
 
-function new_game(){
-
+function start_new_game(){
+    hide("main_menu");
 }
