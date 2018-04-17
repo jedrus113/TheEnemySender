@@ -1,17 +1,23 @@
 var gameInterval;
-var game_state;
 
 
 game = {
-    SAVE_KEY: 'savegame',
+    state: {},
     save: function () {
-        localStorage.setItem(game.SAVE_KEY, JSON.stringify(game_state));
+        localStorage.setItem("savegame", JSON.stringify(game.state));
     },
     load: function () {
-        game_state = JSON.parse(localStorage.getItem(game.SAVE_KEY));
-    },
-    state: game.load()
+        try {
+            game.state = JSON.parse(localStorage.getItem("savegame"));
+            console.log("Game loade: " + !!game.state);
+        } catch(err) {
+            console.log("Error while loading game:" + err);
+        }
+        return !!game.state;
+    }
 };
+game.continue = game.load();
+
 
 function startLoading()
 {
@@ -31,20 +37,18 @@ function hasLoaded()
     if (loaddedSuccess) // Check to see if all info is loaded
     {
         clearInterval(gameInterval);
-
         document.getElementById("loading_bar").setAttribute("hidden", "True");
-
         showMainMenu();
     }
     didEverythingLoad();
 }
 
 function showMainMenu(){
-    document.getElementById("main_menu").removeAttribute("hidden")
-}
-
-
-function restart(){
-    gameInterval = setInterval(hasLoaded, 250);
+    if (game.continue){
+        document.getElementById("continue").removeAttribute("hidden");
+    } else {
+        document.getElementById("continue").setAttribute("hidden", "True");
+    }
+    document.getElementById("main_menu").removeAttribute("hidden");
 }
 
