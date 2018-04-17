@@ -25,5 +25,6 @@ function defence_update(){
 
 function end_of_defence(){
     hide('div_defencetime');
-    start_defence();
+    game.save();
+    start_day();
 }
