@@ -3,14 +3,17 @@
 <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <!--<script src='https://ssl.kongcdn.com/javascripts/kongregate_api.js'></script>-->
-    <script type="text/javascript" src="database/abilities.js"></script>
     <script type="text/javascript" src="database/constants.js"></script>
+    <script type="text/javascript" src="database/abilities.js"></script>
     <script type="text/javascript" src="database/weapons.js"></script>
     <script type="text/javascript" src="database/characters.js"></script>
     <script type="text/javascript" src="graphics/graphics.js"></script>
     <script type="text/javascript" src="logic/enemy.js"></script>
     <script type="text/javascript" src="logic/hero.js"></script>
     <script type="text/javascript" src="logic/logic.js"></script>
+    <script type="text/javascript" src="logic/daytime.js"></script>
+    <script type="text/javascript" src="logic/preparetime.js"></script>
+    <script type="text/javascript" src="logic/defencetime.js"></script>
     <script type="text/javascript" src="graphics/UI.js"></script>
     <script type="text/javascript" src="main.js"></script>
 </head>
@@ -20,7 +23,7 @@
 
     <div id="main_menu" align="center" hidden>
         <table>
-            <tr><td><button id="continue">Continue</button></td></tr>
+            <tr><td><button id="continue" onclick="start_day()">Continue</button></td></tr>
             <tr><td><button id="new_game" onclick="new_game()">New Game</button></td></tr>
             <tr><td><button id="options">Options</button></td></tr>
         </table>

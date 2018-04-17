@@ -1,3 +1,5 @@
+DEBUG = true;
+
 var config = {
     enemy: {
         spanAt: {x:521, y:300},
@@ -12,3 +14,7 @@ var config = {
     }
 };
 
+DEBUG = typeof DEBUG !== 'undefined';
+if (DEBUG){
+    console.log("Debug = " + DEBUG);
+}
