@@ -7,14 +7,17 @@ function hide(id){
 }
 
 function showLoadingScreen(){
-    show("loading_bar");
+    show("img_loading_bar");
+}
+function hideLoadingScreen(){
+    hide("img_loading_bar");
 }
 
 function showMainMenu(){
     if (game.continue){
-        show("continue");
+        show("bttn_continue_game");
     } else {
-        hide("continue");
+        hide("bttn_continue_game");
     }
-    show("main_menu");
+    show("div_main_menu");
 }

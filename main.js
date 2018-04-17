@@ -7,16 +7,15 @@ game = {
         console.log("Saving...");
         localStorage.setItem("savegame", JSON.stringify(game.state));
         if (DEBUG){
-            if(JSON.parse(localStorage.getItem("savegame"))){
-                JSON.parse(localStorage.getItem("savegame"));
-                var new_save = JSON.parse(localStorage.getItem("savegame"));
-                if (JSON.stringify(new_save) == JSON.stringify(game.state)){
+            var new_save = localStorage.getItem("savegame");
+            if(JSON.parse(new_save)){
+                if (new_save == JSON.stringify(game.state)){
                     console.log("Saved!");
                 } else {
                     console.log("Corrupted save! ERROR!");
                 }
             } else {
-                console.lod("Couldn't save! Error!");
+                console.log("Couldn't save! Error!");
             }
         }
     },
@@ -51,7 +50,7 @@ function hasLoaded()
     if (loaddedSuccess) // Check to see if all info is loaded
     {
         clearInterval(gameInterval);
-        document.getElementById("loading_bar").setAttribute("hidden", "True");
+        hideLoadingScreen();
         showMainMenu();
     }
     didEverythingLoad();

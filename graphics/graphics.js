@@ -29,10 +29,3 @@ function didImagesLoad()
     return loaddedSuccess;
 
 }
-
-function drawItem(item){
-    gameCanvas2d.drawImage(images[imageNames[item.image]], item.position.x, item.position.y, item.size.x, item.size.y);
-    if (item.health !== undefined){
-        drawText(gameCanvas2d, "HP " + item.health, true, 20, item.position.x, item.position.y);
-    }
-}
