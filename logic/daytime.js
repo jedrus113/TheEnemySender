@@ -2,6 +2,7 @@
 
 function start_day(){
     console.log("Start day " + game.state.day);
+    show("bttn_daytime_robbery");
     update_day_variables();
     show("div_daytime");
 
