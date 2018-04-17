@@ -3,6 +3,13 @@ var images = [];
 var imageNames = {};
 var loaddedSuccess = false;
 
+function getImages(){
+    getImageFile("images/Stickman.png", "hero");
+    getImageFile("images/evil.png", "evil");
+    getImageFile("images/stop.jpg", "wait");
+    getImageFile("images/boom.png", "boom");
+}
+
 function getImageFile(filename, name)
 {
     var imgVar = document.createElement("img");

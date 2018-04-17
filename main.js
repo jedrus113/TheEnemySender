@@ -1,18 +1,22 @@
-var gameCanvas;
-var gameCanvas2d;
-var eventCatcherDiv;
+var gameInterval;
+var game_state;
 
+
+game = {
+    SAVE_KEY: 'savegame',
+    save: function () {
+        localStorage.setItem(game.SAVE_KEY, JSON.stringify(game_state));
+    },
+    load: function () {
+        game_state = JSON.parse(localStorage.getItem(game.SAVE_KEY));
+    },
+    state: game.load()
+};
 
 function startLoading()
 {
-    // get back when needed
-    //gameCanvas = document.getElementById("GraphicsBox");
-    //gameCanvas2d = gameCanvas.getContext("2d");
     showLoadingScreen();
-
-    eventCatcherDiv = document.getElementById("EventCatcher");
-
-    logicLoad();
+    getImages();
 
     // start checking if images has been loaded
     gameInterval = setInterval(hasLoaded, 250);
@@ -28,7 +32,6 @@ function hasLoaded()
     {
         clearInterval(gameInterval);
 
-        score = 0;
         document.getElementById("loading_bar").setAttribute("hidden", "True");
 
         showMainMenu();
@@ -40,38 +43,8 @@ function showMainMenu(){
     document.getElementById("main_menu").removeAttribute("hidden")
 }
 
-function drawText(g, stringValue, fillText, size, x, y)
-{
-    g.font = "" + size + "px Arial";
-    g.fillStyle = "#000000";
-    if (fillText)
-        g.fillText(stringValue, x, y);
-    else
-        g.strokeText(stringValue, x, y);
-}
-
-function startGame()
-{
-    initLogic();
-    initKeyListeners();
-    gameInterval = setInterval(runGame, 25);
-}
-
-
-function runGame()
-{
-    gameCanvas2d.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
-    drawGameFrame();
-    drawUI();
-}
-
-function gameOver(reason){
-    clearInterval(secondInterval);
-    clearInterval(gameInterval);
-    showGameOverScreen(reason);
-    eventCatcherDiv.addEventListener("click", restart);
-}
 
 function restart(){
     gameInterval = setInterval(hasLoaded, 250);
 }
+
