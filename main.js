@@ -39,6 +39,10 @@ function startLoading()
 
     // start checking if images has been loaded
     gameInterval = setInterval(hasLoaded, 1200);
+
+    if (DEBUG) {
+        hasLoaded();
+    }
 }
 
 function didEverythingLoad(){
@@ -53,6 +57,9 @@ function hasLoaded()
         hideLoadingScreen();
         document.getElementById("BackgroundBox").appendChild(images.logo);
         gameInterval = setInterval(hide_logo_and_start, 1000);
+        if (DEBUG){
+            hide_logo_and_start();
+        }
 
     } else {
         clearInterval(gameInterval);
