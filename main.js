@@ -48,7 +48,3 @@ function new_game(){
         start_new_game();
     }
 }
-
-function start_new_game(){
-    hide("main_menu");
-}

@@ -1,5 +1,13 @@
 
+function start_new_game(){
+    hide("main_menu");
+    show("intro");
+}
 
+function skip_intro(){
+    hide("intro");
+    initLogic();
+}
 
 function initLogic(){
     initEnemy();
