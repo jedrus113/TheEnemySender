@@ -1,4 +1,4 @@
-DEBUG = true;
+//DEBUG = true;
 
 var config = {
     enemy: {

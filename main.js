@@ -1,30 +1,35 @@
 var gameInterval;
 
+function log(message){
+    if (DEBUG){
+        console.log(message);
+    }
+}
 
 game = {
     state: {},
     save: function () {
-        console.log("Saving...");
+        log("Saving...");
         localStorage.setItem("savegame", JSON.stringify(game.state));
         if (DEBUG){
             var new_save = localStorage.getItem("savegame");
             if(JSON.parse(new_save)){
                 if (new_save == JSON.stringify(game.state)){
-                    console.log("Saved!");
+                    log("Saved!");
                 } else {
-                    console.log("Corrupted save! ERROR!");
+                    log("Corrupted save! ERROR!");
                 }
             } else {
-                console.log("Couldn't save! Error!");
+                log("Couldn't save! Error!");
             }
         }
     },
     load: function () {
         try {
             game.state = JSON.parse(localStorage.getItem("savegame"));
-            console.log("Game loade: " + !!game.state);
+            log("Game loade: " + !!game.state);
         } catch(err) {
-            console.log("Error while loading game:" + err);
+            log("Error while loading game:" + err);
         }
         return !!game.state;
     }
