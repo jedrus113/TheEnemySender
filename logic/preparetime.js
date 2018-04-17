@@ -1,6 +1,6 @@
 
 function start_preparation(){
-    document.getElementById('preparetime_hint').innerHTML += "</br>Enemy!";
+    document.getElementById('preparetime_hint').innerHTML = "</br>Enemy!";
     show('div_preparetime');
 }
 
