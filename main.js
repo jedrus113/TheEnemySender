@@ -38,7 +38,7 @@ function startLoading()
     getImages();
 
     // start checking if images has been loaded
-    gameInterval = setInterval(hasLoaded, 250);
+    gameInterval = setInterval(hasLoaded, 1200);
 }
 
 function didEverythingLoad(){
@@ -47,14 +47,25 @@ function didEverythingLoad(){
 
 function hasLoaded()
 {
-    if (loaddedSuccess) // Check to see if all info is loaded
+    if (loaddedSuccess || didEverythingLoad()) // Check to see if all info is loaded
     {
         clearInterval(gameInterval);
         hideLoadingScreen();
-        showMainMenu();
+        document.getElementById("BackgroundBox").appendChild(images.logo);
+        gameInterval = setInterval(hide_logo_and_start, 1000);
+
+    } else {
+        clearInterval(gameInterval);
+        gameInterval = setInterval(hasLoaded, 300);
     }
-    didEverythingLoad();
 }
+
+function hide_logo_and_start(){
+    clearInterval(gameInterval);
+    document.getElementById("BackgroundBox").removeChild(images.logo);
+    showMainMenu();
+}
+
 
 function new_game(){
     if (!game.continue || confirm('Are you sure you want to start new game?')){

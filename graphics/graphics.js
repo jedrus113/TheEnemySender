@@ -1,30 +1,27 @@
 // shall be fist
-var images = [];
+var images = {};
 var imageNames = {};
 var loaddedSuccess = false;
 
 function getImages(){
-    getImageFile("images/Stickman.png", "hero");
-    getImageFile("images/evil.png", "evil");
-    getImageFile("images/stop.jpg", "wait");
-    getImageFile("images/boom.png", "boom");
+    getImageFile("images/studiologo.png", "logo");
 }
 
 function getImageFile(filename, name)
 {
     var imgVar = document.createElement("img");
     imgVar.setAttribute("src", filename);
-    imageNames[name] = images.length;
-    images.push(imgVar);
+    images[name] = imgVar;
 }
 
 function didImagesLoad()
 {
-    for (var j = 0; j < images.length; j++)
-        if (!images[j].complete){
+    for (var id in images){
+        if (!images[id].complete){
             loaddedSuccess = false;
             return loaddedSuccess;
         }
+    }
     loaddedSuccess = true;
     return loaddedSuccess;
 
