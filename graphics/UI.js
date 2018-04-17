@@ -1,3 +1,11 @@
+function show(id){
+    document.getElementById(id).removeAttribute("hidden");
+}
+
+function hide(id){
+    document.getElementById(id).setAttribute("hidden", "True");
+}
+
 
 function drawUI(){
     var waitTime = 0;
@@ -9,5 +17,5 @@ function drawUI(){
 }
 
 function showLoadingScreen(){
-    document.getElementById("loading_bar").removeAttribute("hidden")
+    show("loading_bar");
 }

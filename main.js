@@ -45,10 +45,13 @@ function hasLoaded()
 
 function showMainMenu(){
     if (game.continue){
-        document.getElementById("continue").removeAttribute("hidden");
+        show("continue");
     } else {
-        document.getElementById("continue").setAttribute("hidden", "True");
+        hide("continue");
     }
-    document.getElementById("main_menu").removeAttribute("hidden");
+    show("main_menu");
 }
 
+function new_game(){
+
+}
