@@ -11,7 +11,8 @@ function skip_intro(){
         day: 0
     };
     hide("div_intro");
-    end_of_night();
+    game.save();
+    start_day();
 }
 
 function continue_game(){
